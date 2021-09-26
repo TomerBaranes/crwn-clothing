@@ -28,3 +28,8 @@ export const OptionLink = styled(Link)`
   margin-left: 10px;
   cursor: pointer;
 `;
+
+export const UserNameDisplay = styled.div`
+  padding: 10px 15px;
+  margin-left: 10px;
+`;
