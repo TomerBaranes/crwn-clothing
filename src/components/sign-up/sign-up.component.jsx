@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import "./sign-up.styles.scss";
 
@@ -10,7 +10,7 @@ import { signUpStart } from "../../redux/user/user.actions";
 
 import Swal from "sweetalert2";
 
-const SignUp = ({ signUpStart }) => {
+const SignUp = () => {
   const [userCredentials, setUserCredentials] = useState({
     displayName: "",
     email: "",
@@ -20,9 +20,11 @@ const SignUp = ({ signUpStart }) => {
 
   const { displayName, email, password, confirmPassword } = userCredentials;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const dispatch = useDispatch();
+  const signUpStartHandler = ({ email, password, displayName }) =>
+    dispatch(signUpStart({ email, password, displayName }));
 
+  const handleSubmit = async (e) => {
     if (password !== confirmPassword) {
       Swal.fire({
         title: "Error!",
@@ -33,7 +35,8 @@ const SignUp = ({ signUpStart }) => {
       });
       return;
     }
-    signUpStart({ email, password, displayName });
+    signUpStartHandler({ email, password, displayName });
+    e.preventDefault();
   };
 
   const handleChange = (e) => {
@@ -85,8 +88,4 @@ const SignUp = ({ signUpStart }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  signUpStart: (userCredentials) => dispatch(signUpStart(userCredentials)),
-});
-
-export default connect(null, mapDispatchToProps)(SignUp);
+export default SignUp;
