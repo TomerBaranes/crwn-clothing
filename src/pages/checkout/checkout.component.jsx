@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
@@ -39,6 +40,15 @@ const CheckoutPage = () => {
 
       <div className="total">
         <span>TOTAL: ${cartItemsPrice}</span>
+        <br />
+        <button
+          className="checkout-button"
+          onClick={() =>
+            Swal.fire("lmao this doesn't work yet sorry blame stripe")
+          }
+        >
+          checkout
+        </button>
       </div>
     </div>
   );

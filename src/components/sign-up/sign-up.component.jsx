@@ -25,6 +25,7 @@ const SignUp = () => {
     dispatch(signUpStart({ email, password, displayName }));
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     if (password !== confirmPassword) {
       Swal.fire({
         title: "Error!",
@@ -36,7 +37,6 @@ const SignUp = () => {
       return;
     }
     signUpStartHandler({ email, password, displayName });
-    e.preventDefault();
   };
 
   const handleChange = (e) => {
