@@ -44,7 +44,9 @@ const CheckoutPage = () => {
         <button
           className="checkout-button"
           onClick={() =>
-            Swal.fire("lmao this doesn't work yet sorry blame stripe")
+            Swal.fire(
+              "Stripe's not working in Israel without a VPN and an American bank account makes me sad"
+            )
           }
         >
           checkout
