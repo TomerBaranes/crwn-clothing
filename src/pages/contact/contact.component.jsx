@@ -7,7 +7,7 @@ import { GeoAltFill, Phone, Envelope } from "react-bootstrap-icons";
 import "./contact.styles.scss";
 import Swal from "sweetalert2";
 
-const prod = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
+//const prod = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -33,10 +33,10 @@ const ContactPage = () => {
     });
     emailjs
       .sendForm(
-        prod ? process.env.REACT_APP_SERVICE_ID : process.env.SERVICE_ID,
-        prod ? process.env.REACT_APP_TEMPLATE_ID : process.env.TEMPLATE_ID,
+        "service_dtkhywn",
+        "template_c3yt38p",
         event.target,
-        prod ? process.env.REACT_APP_USER_ID : process.env.USER_ID
+        "user_girxTqYL3d7NfbH1xUjkf"
       )
       .then(
         (result) => {
