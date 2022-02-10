@@ -1,3 +1,4 @@
+import {} from "dotenv/config";
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 
@@ -6,6 +7,8 @@ import { GeoAltFill, Phone, Envelope } from "react-bootstrap-icons";
 
 import "./contact.styles.scss";
 import Swal from "sweetalert2";
+
+const prod = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -31,10 +34,10 @@ const ContactPage = () => {
     });
     emailjs
       .sendForm(
-        process.env.SERVICE_ID,
-        process.env.TEMPLATE_ID,
+        prod ? process.env.REACT_APP_SERVICE_ID : process.env.SERVICE_ID,
+        prod ? process.env.REACT_APP_TEMPLATE_ID : process.env.TEMPLATE_ID,
         event.target,
-        process.env.USER_ID
+        prod ? process.env.REACT_APP_USER_ID : process.env.USER_ID
       )
       .then(
         (result) => {
