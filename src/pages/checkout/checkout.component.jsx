@@ -44,9 +44,7 @@ const CheckoutPage = () => {
         <button
           className="checkout-button"
           onClick={() =>
-            Swal.fire(
-              "Stripe's not working in Israel without a VPN and an American bank account makes me sad"
-            )
+            Swal.fire(":( stipe isn't availabe in Israel at the moment")
           }
         >
           checkout
